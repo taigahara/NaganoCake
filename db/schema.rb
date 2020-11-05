@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2020_11_04_123923) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "last_name"
+    t.string "last_name_kana"
+    t.string "first_name"
+    t.string "first_name_kana"
+    t.string "phone_number"
+    t.string "address"
+    t.string "postal_code"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admin
   devise_for :end_users
-  root 'homes#top'
-  get 'homes/about'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :public do
+  scope module: :public do
+    get '/' => "homes#top",as: 'home'
+    get 'homes/about' => "homes#about",as: 'about'
     resource :end_users
     get 'end_users/mypage' => 'end_users#show'
   end
