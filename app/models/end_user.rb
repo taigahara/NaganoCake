@@ -11,4 +11,7 @@ class EndUser < ApplicationRecord
   validates :phone_number,presence: true
   validates :address, presence: true
   validates :postal_code,presence: true
+
+  acts_as_paranoid
+
 end
