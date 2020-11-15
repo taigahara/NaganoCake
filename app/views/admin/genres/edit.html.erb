@@ -1,0 +1,16 @@
+<%= form_with model: @genre, url: admin_genre_path  do |f| %>
+  <div>
+      <div>
+          <label>ジャンル</label>
+          <%= f.text_field :name %>
+      </div>
+      <div>
+          <label>販売ステータス</label>
+          <span><%= f.radio_button :is_invalid, '有効' %>有効</span>
+          <span><%= f.radio_button :is_invalid, '無効' %>無効</span>
+      </div>
+  </div>
+  <div>
+      <%= f.submit 'アップデート' %>
+  </div>
+<% end %>
