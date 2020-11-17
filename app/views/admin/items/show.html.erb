@@ -1,12 +1,23 @@
 <table class="table table-striped">
             <h2>Book detail</h2>
+    <thead>
+        <tr>
+            <th>商品画像</th>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+        </tr>
+    </thead>
             <th>
             <%= attachment_image_tag @product, :image, :fill, 230,154, fallback: 'sample.png',size:'60x60' %>
                 <td><%= @product.id %></td>
                 <td><%= @product.name %></td>
                 <td><%= @product.price %></td>
-                <td><%= @product.genre_id %></td>
+                <td><%= @product.genre.name %></td>
                 <td><%= @product.is_sold %></td>
 
                 <td><%= link_to '商品一覧へ', admin_items_path %></td>
+            </th>
     </table>

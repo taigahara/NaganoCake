@@ -1,14 +1,19 @@
 <table class="table table-bordered">
         <div class="col-xs-9">
             <div>
-                <h2 class="items-list">商品一覧</h2><span class="items-count">(全<%= @products.count %>件)</span>
+                <h2 class="items-list">商品一覧</h2>
             </div>
+            <tr>
+            　　　<th>商品画像</th>
+            　　　<th>商品名</th>
+            　　　<th>税込価格</th>
+            </tr>
             <div>
                 <% @products.each do |product| %>
-                    <section>
-                        <%= attachment_image_tag product, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %>
-                        <h3><%= product.name %></h3>
-                        <p><%= product.price*1.08 %>円</p>
-                    </section>
+                    <tr>
+                        <td><%= attachment_image_tag product, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %></td>
+                        <td><%= product.name %></td>
+                        <td><%= (product.price * 1.1).round %>円</td>
+                    </tr>
                 <% end %>
             </div>
