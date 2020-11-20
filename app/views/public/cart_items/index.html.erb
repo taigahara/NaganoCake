@@ -1,3 +1,4 @@
+
 <table>
             <div>
                 <h2>カート内商品</h2>
@@ -6,15 +7,30 @@
             　　　　　　<td>商品画像</td>
             　　　　　　<td>商品名</td>
             　　　　　　<td>税込価格</td>
+                      <td>個数</td>
+                      <td></td>
+                      <td>小計</td>
             　　　</tr>
             <div>
+            <% @sum = 0 %>
             　<% @cart_items.each do |cart_item| %>
                   <tr>
-                      <th><%= attachment_image_tag cart_item, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %></th>
-                      <th><%= cart_item.item.name %></th>
-                      <th><%= (cart_item.item.price * 1.1).round %>円</th>
+                      <th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %></th>
+                      <th><%= cart_item.product.name %></th>
+                      <th><%= (cart_item.product.price * 1.1).round %>円</th>
+                        <%= form_with model:cart_item, url:cart_item_path(cart_item.id), method: :patch do |f| %></th>
+                          <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>個</th>
+                          <th><%= f.submit "変更" %></th>
+                        <% end %>
+                      <th><%= (cart_item.product.price * 1.1).round.to_i * cart_item.quantity.to_i %>円</th>
+                      <th><%= link_to "削除する", cart_item, method: :delete %></th>
+                      <% @sum += (cart_item.product.price * 1.1).round.to_i * cart_item.quantity.to_i %>
                   </tr>
              <% end %>
+            <th>カート内合計<%= @sum %>円</th>
             </div>
+            <div><%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, data: { confirm: "カートから削除しますか？"} %></div>
 </table>
-　　　　　　　<%= link_to 'カートを空にする', cart_items_all_delete_path, method: :delete %>
+
+<div><%= link_to "買い物を続ける", items_path %></div>
+<div>情報入力に進む</div>

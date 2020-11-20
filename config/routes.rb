@@ -10,8 +10,11 @@ Rails.application.routes.draw do
     patch "/end_users/hide" => "end_users#hide"
     get "/end_users/hide_confirm" => "end_users#hide_confirm"
     resources :items,only:[:index,:show]
-    resources :cart_items,only:[:index,:update,:destroy]
-    delete '/cart_items/all_destroy' => 'cart_items#all_destroy', as: 'cart_items_all_delete'
+    resources :cart_items,only:[:index,:update,:destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     post '/cart_items/add_item' => 'cart_items#add_item'
   end
 
