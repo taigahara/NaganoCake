@@ -13,5 +13,6 @@ class EndUser < ApplicationRecord
   validates :postal_code,presence: true
 
   acts_as_paranoid
+  has_many :cart_items, dependent: :destroy
 
 end

@@ -1,0 +1,20 @@
+<table>
+            <div>
+                <h2>カート内商品</h2>
+            </div>
+            　　　<tr>
+            　　　　　　<td>商品画像</td>
+            　　　　　　<td>商品名</td>
+            　　　　　　<td>税込価格</td>
+            　　　</tr>
+            <div>
+            　<% @cart_items.each do |cart_item| %>
+                  <tr>
+                      <th><%= attachment_image_tag cart_item, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %></th>
+                      <th><%= cart_item.item.name %></th>
+                      <th><%= (cart_item.item.price * 1.1).round %>円</th>
+                  </tr>
+             <% end %>
+            </div>
+</table>
+　　　　　　　<%= link_to 'カートを空にする', cart_items_all_delete_path, method: :delete %>
