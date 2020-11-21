@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: 'test@test.test',
+    email: 'ddd@ddd',
     password: 'password'
 )
 
@@ -18,7 +18,37 @@ EndUser.create!(
     first_name_kana: 'タイガ',
     postal_code: '0800318',
     address: '北海道音更町緑陽台',
+    email: 'ccc@ccc',
     phone_number: '00000000000',
-    email: 'test@test.test',
     password: 'password'
+)
+
+Genre.create!(
+    [
+        {
+            name: 'ケーキ'
+        },
+        {
+            name: 'プリン'
+        },
+    ]
+)
+
+Product.create!(
+    [
+        {
+            name: 'ケーキ',
+            explanation: "おいしいおいしい",
+            genre_id: '1',
+            price: '300',
+            is_sold: '販売中'
+        },
+        {
+            name: 'プリン',
+            explanation: "うまいうまい",
+            genre_id: '2',
+            price: '150',
+            is_sold: '販売中'
+        },
+    ]
 )
