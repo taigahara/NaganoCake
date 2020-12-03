@@ -16,6 +16,10 @@ Rails.application.routes.draw do
       end
     end
     post '/cart_items/add_item' => 'cart_items#add_item'
+    resources :orders,only:[:new,:index,:create]
+    post "orders/confirm" => "orders#confirm"
+    get "orders/thanks" => "orders#thanks"
+    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
   end
 
   namespace :admin do
@@ -23,6 +27,8 @@ Rails.application.routes.draw do
     resources :end_users
     resources :genres,only:[:index,:create,:edit,:update]
     resources :items
+    resources :orders,only:[:index,:show,:update]
+    resources :order_details,only:[:update]
   end
 
 end
