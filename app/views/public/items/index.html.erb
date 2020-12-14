@@ -1,4 +1,4 @@
-<table>
+
             <div>
                 <h2 class="items-list">商品一覧</h2>
             </div>
@@ -9,12 +9,13 @@
             </tr>
             <div>
                 <% @products.each do |product| %>
+                    <table>
                     <tr>
                         <td><%= attachment_image_tag product, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %></td>
                         <td><%= product.name %></td>
                         <td><%= (product.price * 1.1).round %>円</td>
                         <td><%= link_to "商品詳細画面へ", item_path(product) %></td>
                     </tr>
+                    </table>
                 <% end %>
             </div>
-</table>

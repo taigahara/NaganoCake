@@ -8,18 +8,19 @@
                  　　　<td>商品説明</td>
             　　　　　　<td>税込価格</td>
             　　　</tr>
+</table>
             <div>
-                  <tr>
-                  <%= form_with model: @cart_item, url: cart_items_add_item_path do |f| %>
+                  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+                　　<table>
                       <th><%= attachment_image_tag @product, :image, :fill, 230,154, fallback: 'sample.png', size:'60x60' %></th>
                       <th><%= @product.name %></th>
                       <th><%= @product.explanation %></th>
                       <th><%= (@product.price * 1.1).round %>円</th>
-                        <%= f.hidden_field :product_id , :value => @product.id %>
-                        <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+                        <%= f.hidden_field :product_id, :value => @product.id %>
+                        <%= f.select :quantity, [1,2,3,4,5] %>
                         <%= f.submit "カートに入れる" %>
+                    </table>
                   <% end %>
-                  </tr>
             </div>
-</table>
+
             <div><%= link_to "商品一覧に戻る", items_path %></div>

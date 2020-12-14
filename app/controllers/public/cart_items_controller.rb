@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def add_item
+  def create
     @cart_item = CartItem.new(cart_params)
     @cart_item.end_user_id = current_end_user.id
     if current_end_user.cart_items.exists?(product_id: @cart_item.product_id)
