@@ -31,11 +31,12 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
     end
     redirect_to cart_items_path
+
   end
 
  private
   def cart_params
-    params.require(:cart_item).permit(:quantity, :product_id)
+    params.require(:cart_item).permit(:quantity, :product_id, :end_user_id)
   end
 
   def cart_update

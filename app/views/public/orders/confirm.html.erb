@@ -1,4 +1,4 @@
-<%= form_with model: @order do |f| %>
+
       <h3>注文確認<//h3>
       <table>
                <tr>
@@ -39,10 +39,18 @@
               </tr>
               <tr>
                   <th>お届け先</th>
-                  <td><%= @order.postal_code + @order.address %></td>
+                  <td><%= @order.postal_code %></td>
+                  <td><%= @order.address %></td>
                   <td><%= @order.name %></td>
               </tr>
         </table>
-<% end %>
 
-<div><%= link_to "購入を確定する", orders_thanks_path, data: { confirm: '本当によろしいですか?' } %></div>
+        <%= form_with model: @order, url: orders_path, local: true do |f| %>
+            <div class="actions btn">
+                <%= f.hidden_field :payment_method%>
+                <%= f.hidden_field :address%>
+                <%= f.hidden_field :postal_code%>
+                <%= f.hidden_field :name%>
+                <%= f.submit "注文を確定する", data: {confirm: "注文を確定してもよろしいですか？"} %>
+            </div>
+        <% end %>
