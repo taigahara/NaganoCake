@@ -18,9 +18,9 @@
   </tr>
   <tr>
     <th>注文ステータス</th>
-     <th><%= form_with model:@order, url: admin_order_path(@order), local: true do |f| %></th>
-     <th><%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"),k]} %></th>
-     <th><%= f.submit "更新" %></th>
+     <td><%= form_with model:@order, url: admin_order_path(@order), local: true do |f| %></td>
+     <td><%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"),k]} %></td>
+     <td><%= f.submit "更新" %></td>
     <% end %>
   </tr>
   <table>
@@ -40,12 +40,10 @@
                     <th><%= order.quantity %>個</th>
                     <th><%= (order.product.price * 1.1).round.to_i * order.quantity.to_i %>円</th>
                     <% @sum += (order.product.price * 1.1).round.to_i * order.quantity.to_i %>
-                    <td>
-                    <%= form_with model:order, url: admin_order_detail_path(order), method: :patch, local: true do |f| %>
-                      <th><%= f.select :production_status, OrderDetail.production_statuses.keys.map { |k| [I18n.t("enums.order_detail.production_status.#{k}"),k] } %></th>
-                      <th><%= f.submit "更新"%></th>
+                    <td><%= form_with model:order, url: admin_order_detail_path(order), method: :patch, local: true do |f| %></td>
+                      <td><%= f.select :production_status, OrderDetail.production_statuses.keys.map { |k| [I18n.t("enums.order_detail.production_status.#{k}"),k] } %></td>
+                      <td><%= f.submit "更新"%></td>
                     <% end %>
-                    </td>
                 </tr>
            <% end %>
         </div>

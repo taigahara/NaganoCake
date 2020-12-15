@@ -18,9 +18,9 @@
                       <th><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50 %></th>
                       <th><%= cart_item.product.name %></th>
                       <th><%= (cart_item.product.price * 1.1).round %>円</th>
-                        <%= form_with model:cart_item, url:cart_item_path(cart_item.id), method: :patch do |f| %></th>
-                          <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>個</th>
-                          <th><%= f.submit "変更" %></th>
+                        <td><%= form_with model:cart_item, url:cart_item_path(cart_item.id), method: :patch do |f| %></td>
+                          <td><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>個</td>
+                          <td><%= f.submit "変更" %></td>
                         <% end %>
                       <th><%= (cart_item.product.price * 1.1).round.to_i * cart_item.quantity.to_i %>円</th>
                       <th><%= link_to "削除する", cart_item, method: :delete %></th>
