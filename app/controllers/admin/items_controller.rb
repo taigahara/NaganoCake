@@ -25,14 +25,6 @@ def show
     @product = Product.find(params[:id])
 end
 
-# 商品編集画面
-def edit
-end
-
-# 商品情報の更新
-def update
-end
-
 private
 
 def product_params
